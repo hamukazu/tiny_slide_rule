@@ -44,6 +44,8 @@ def draw_scale(c: canvas, height: float, base_x: float, flip: bool):
     text_height = font_height(face, fontsize)
     leading = 1 * cm
     scale = 14 * cm
+    # circle mark on the upper scale
+    c.circle(base_x + 4 * cm, height - leading, 0.1 * cm)
     for i in range(3):
         t = 1 * cm
         x = i * scale
@@ -51,7 +53,7 @@ def draw_scale(c: canvas, height: float, base_x: float, flip: bool):
         z = height - leading - x
         if not flip:
             y = z
-        label = str(10 ** i)
+        label = str(10**i)
         tick(c, text_height, base_x, y, t, 1, label)
         tick(c, text_height, base_x, z, t, -1, label)
     fontsize = 9
@@ -117,7 +119,7 @@ def main():
     c.saveState()
 
     c.setAuthor("Kimikazu Kato")
-    c.setTitle("Test")
+    c.setTitle("Tiny Slide Scale")
 
     for w in [width / 4, width / 2, width * 3 / 4]:
         c.line(w, 0, w, height)
